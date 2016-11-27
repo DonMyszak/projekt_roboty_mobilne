@@ -138,6 +138,11 @@ namespace WindowsFormsApplication1
             {
                 objPozycja = Pozycja.Dol;
             }
+
+            else if (e.KeyCode == Keys.Space)
+            {
+                objPozycja = Pozycja.Stop;
+            }
         }
     }
 }
