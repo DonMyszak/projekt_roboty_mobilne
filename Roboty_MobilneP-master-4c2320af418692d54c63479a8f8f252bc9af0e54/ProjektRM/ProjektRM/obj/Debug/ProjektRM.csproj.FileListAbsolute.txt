@@ -1,0 +1,28 @@
+c:\users\konrad\documents\visual studio 2015\Projects\ProjektRM\ProjektRM\bin\Debug\ProjektRM.exe.config
+C:\Users\Konrad\documents\visual studio 2015\Projects\ProjektRM\ProjektRM\obj\Debug\ProjektRM.csprojResolveAssemblyReference.cache
+C:\Users\Konrad\documents\visual studio 2015\Projects\ProjektRM\ProjektRM\obj\Debug\MainWindow.g.cs
+C:\Users\Konrad\documents\visual studio 2015\Projects\ProjektRM\ProjektRM\obj\Debug\App.g.cs
+C:\Users\Konrad\documents\visual studio 2015\Projects\ProjektRM\ProjektRM\obj\Debug\ProjektRM_MarkupCompile.cache
+C:\Users\Konrad\documents\visual studio 2015\Projects\ProjektRM\ProjektRM\obj\Debug\ProjektRM_MarkupCompile.lref
+C:\Users\Konrad\Documents\Visual Studio 2015\Projects\ProjektRM\ProjektRM\bin\Debug\ProjektRM.exe
+C:\Users\Konrad\Documents\Visual Studio 2015\Projects\ProjektRM\ProjektRM\bin\Debug\ProjektRM.pdb
+C:\Users\Konrad\Documents\Visual Studio 2015\Projects\ProjektRM\ProjektRM\obj\Debug\MainWindow.baml
+C:\Users\Konrad\Documents\Visual Studio 2015\Projects\ProjektRM\ProjektRM\obj\Debug\ProjektRM.g.resources
+C:\Users\Konrad\Documents\Visual Studio 2015\Projects\ProjektRM\ProjektRM\obj\Debug\ProjektRM.Properties.Resources.resources
+C:\Users\Konrad\Documents\Visual Studio 2015\Projects\ProjektRM\ProjektRM\obj\Debug\ProjektRM.csproj.GenerateResource.Cache
+C:\Users\Konrad\Documents\Visual Studio 2015\Projects\ProjektRM\ProjektRM\obj\Debug\ProjektRM.exe
+C:\Users\Konrad\Documents\Visual Studio 2015\Projects\ProjektRM\ProjektRM\obj\Debug\ProjektRM.pdb
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\bin\Debug\ProjektRM.exe.config
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\obj\Debug\ProjektRM.exe
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\obj\Debug\ProjektRM.pdb
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\bin\Debug\ProjektRM.exe
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\bin\Debug\ProjektRM.pdb
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\obj\Debug\ProjektRM.csprojResolveAssemblyReference.cache
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\obj\Debug\MainWindow.g.cs
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\obj\Debug\App.g.cs
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\obj\Debug\ProjektRM_MarkupCompile.cache
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\obj\Debug\ProjektRM_MarkupCompile.lref
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\obj\Debug\MainWindow.baml
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\obj\Debug\ProjektRM.g.resources
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\obj\Debug\ProjektRM.Properties.Resources.resources
+C:\Users\Dom\Desktop\Roboty_MobilneP-master-4c2320af418692d54c63479a8f8f252bc9af0e54\ProjektRM\ProjektRM\obj\Debug\ProjektRM.csproj.GenerateResource.Cache
