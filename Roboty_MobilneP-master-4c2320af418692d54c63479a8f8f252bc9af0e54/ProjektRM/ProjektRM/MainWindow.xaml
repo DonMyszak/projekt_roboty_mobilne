@@ -10,7 +10,7 @@
     <Grid Margin="0,0,650.8,-3">
         <Grid x:Name="robotInformation" Margin="155,111,159,175">
             <ProgressBar HorizontalAlignment="Left" Height="21" Margin="229,48,0,0" VerticalAlignment="Top" Width="95"/>
-            <TextBox x:Name="identyfikatorRobota" HorizontalAlignment="Left" Height="21" Margin="124,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100"/>
+            <TextBox x:Name="identyfikatorRobota" HorizontalAlignment="Left" Height="21" Margin="124,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" TextChanged="identyfikatorRobota_TextChanged"/>
             <Label x:Name="identyfikator" Content="Identyfikator:" HorizontalAlignment="Left" Margin="24,48,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
             <Label x:Name="ledLabel" Content="Led:" HorizontalAlignment="Left" Margin="24,100,0,0" VerticalAlignment="Top" Width="100"/>
             <RadioButton x:Name="ledRadio" Content="" HorizontalAlignment="Left" Margin="124,106,0,0" VerticalAlignment="Top" Width="17"/>
@@ -27,10 +27,10 @@
             <Button x:Name="disconnectButton" Content="Disconnect" HorizontalAlignment="Left" Margin="237,44,0,0" VerticalAlignment="Top" Width="75" Height="24"/>
         </Grid>
         <Button x:Name="robotJeden" Content="Robot 1" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top" Width="75" Click="robotJeden_Click"/>
-        <Button x:Name="robotDwa" Content="Robot 2" HorizontalAlignment="Left" Margin="100,349,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="robotTrzy" Content="Robot 3" HorizontalAlignment="Left" Margin="192,349,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="robotCztery" Content="Robot 4" HorizontalAlignment="Left" Margin="282,349,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="robotPiec" Content="Robot 5" HorizontalAlignment="Left" Margin="378,349,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="robotDwa" Content="Robot 2" HorizontalAlignment="Left" Margin="100,349,0,0" VerticalAlignment="Top" Width="75" Click="robotDwa_Click"/>
+        <Button x:Name="robotTrzy" Content="Robot 3" HorizontalAlignment="Left" Margin="192,349,0,0" VerticalAlignment="Top" Width="75" Click="robotTrzy_Click"/>
+        <Button x:Name="robotCztery" Content="Robot 4" HorizontalAlignment="Left" Margin="282,349,0,0" VerticalAlignment="Top" Width="75" Click="robotCztery_Click"/>
+        <Button x:Name="robotPiec" Content="Robot 5" HorizontalAlignment="Left" Margin="378,349,0,0" VerticalAlignment="Top" Width="75" Click="robotPiec_Click"/>
         <CheckBox x:Name="robotJedenCheck"  HorizontalAlignment="Left" Margin="40,413,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="robotDwaCheck"  HorizontalAlignment="Left" Margin="128,413,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="robotTrzyCheck"  HorizontalAlignment="Left" Margin="219,413,0,0" VerticalAlignment="Top"/>
@@ -38,11 +38,11 @@
         <CheckBox x:Name="robotPiecCheck"  HorizontalAlignment="Left" Margin="405,413,0,0" VerticalAlignment="Top"/>
         <Button x:Name="startButton" Content="START" HorizontalAlignment="Left" Margin="564,349,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="stopButton" Content="STOP" HorizontalAlignment="Left" Margin="564,409,0,0" VerticalAlignment="Top" Width="75"/>
-        <Ellipse Fill="Firebrick" Stroke="Black" x:Name="Led1" Margin="34,451,614,38"/>
-        <Ellipse Fill="Firebrick" Stroke="Black" x:Name="Led2" Margin="120,451,528,38"/>
-        <Ellipse Fill="Firebrick" Stroke="Black" x:Name="Led3" Margin="212,451,436,38"/>
-        <Ellipse Fill="Firebrick" Stroke="Black" x:Name="Led4" Margin="300,451,348,38"/>
-        <Ellipse Fill="Firebrick" Stroke="Black" x:Name="Led5" Margin="399,451,249,38"/>
+        <Ellipse Fill="Red" Stroke="Black" x:Name="Led1" Margin="31,441,606.2,38"/>
+        <Ellipse Fill="Red" Stroke="Black" x:Name="Led2" Margin="116,441,520.2,38"/>
+        <Ellipse Fill="Red" Stroke="Black" x:Name="Led3" Margin="207,441,430.2,38"/>
+        <Ellipse Fill="Red" Stroke="Black" x:Name="Led4" Margin="297,441,340.2,38"/>
+        <Ellipse Fill="Red" Stroke="Black" x:Name="Led5" Margin="393,441,244.2,38"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="521" Margin="673,-4,0,0" VerticalAlignment="Top" Width="3"/>
         <Canvas Name="PaintCanvas" HorizontalAlignment="Left" Height="500" Margin="673,0,-493.8,0" VerticalAlignment="Top" Width="500" MouseLeftButtonUp="PaintCanvas_MouseLeftButtonUp" UseLayoutRounding="False" OpacityMask="Black" Background="Black" MouseMove="PaintCanvas_MouseMove" MouseRightButtonUp="PaintCanvas_MouseRightButtonUp"/>
     </Grid>

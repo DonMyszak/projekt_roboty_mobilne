@@ -22,18 +22,31 @@ namespace ProjektRM
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        private System.Windows.Threading.DispatcherTimer timer;
+        Robot[] robot = new Robot[5];
         Random rand = new Random();
-        Ellipse ellipse = null;
+        Ellipse[] ellipse = new Ellipse[5];
         Line myLine = new Line();
         TextBlock wsp_x_info = new TextBlock();
         TextBlock wsp_y_info = new TextBlock();
+        Line myLine1 = new Line();
+        TextBlock wsp_x_info1 = new TextBlock();
+        TextBlock wsp_y_info1 = new TextBlock();
+        Line myLine2 = new Line();
+        TextBlock wsp_x_info2 = new TextBlock();
+        TextBlock wsp_y_info2 = new TextBlock();
+        Line myLine3 = new Line();
+        TextBlock wsp_x_info3 = new TextBlock();
+        TextBlock wsp_y_info3 = new TextBlock();
+        Line myLine4 = new Line();
+        TextBlock wsp_x_info4 = new TextBlock();
+        TextBlock wsp_y_info4 = new TextBlock();
+        private System.Windows.Threading.DispatcherTimer timer;
         public Pozycja objPozycja;
-        public int wsp_x = 50;
-        public int wsp_y = 50;
-        public bool przycisk = false;
-        public bool rysLinii = false;
+        public int id_przycisku;
+        public bool[] przycisk = new bool[5];
+        public bool[] rysLinii = new bool[5];
+        public bool[] robot_dostepny = new bool[5];
+        
 
 
         public enum Pozycja
@@ -46,23 +59,44 @@ namespace ProjektRM
 
             public int wsp_x;
             public int wsp_y;
+            public string identyfikator;
+            public int bateria;
+            public int predkosc;
+            public bool led;
 
-            public Robot(int x, int y)
+            public Robot(int x, int y, string id)
             {
-
                 wsp_x = x;
                 wsp_y = y;
-
+                identyfikator = id;
             }
+
 
         }
 
         public MainWindow()
         {
             InitializeComponent();
+            int i = 0;
+            robot_dostepny[0] = true;
+            robot_dostepny[1] = true;
+            robot_dostepny[2] = true;
+            robot_dostepny[3] = true;
+            robot_dostepny[4] = true;
+            przycisk[0] = false;
+            przycisk[1] = false;
+            przycisk[2] = false;
+            przycisk[3] = false;
+            przycisk[4] = false;
+            for (i = 0; i < robot.Length; i++)
+            {
+                if (robot_dostepny[i])
+                {
+                    robot[i] = new Robot(50+i*50, 50+i*50, Convert.ToString(i+1));
 
-            Robot robot = new Robot(wsp_x, wsp_y);
-            objPozycja = Pozycja.Dol;
+                }
+            }
+            objPozycja = Pozycja.Stop;
             //Initialize the timer class 
             timer = new System.Windows.Threading.DispatcherTimer();
             timer.Start();
@@ -70,55 +104,101 @@ namespace ProjektRM
             timer.Tick += timer1_Tick;
 
         }
-        private void ledChangeColor(Ellipse x)
+        private void ledChangeColorGreen(Ellipse x)
         {
 
             x.Fill = new SolidColorBrush(Colors.ForestGreen);
         }
 
-        private void robotJeden_Click(object sender, RoutedEventArgs e)
+        private void ledChangeColorRed(Ellipse x)
         {
-            ledChangeColor(Led1);
+
+            x.Fill = new SolidColorBrush(Colors.Red);
         }
 
+        private void robotJeden_Click(object sender, RoutedEventArgs e)
+        {
+            if (robot[0] != null)
+            {
+                identyfikatorRobota.Text = robot[0].identyfikator;
+            }
+        }
 
+        private void robotDwa_Click(object sender, RoutedEventArgs e)
+        {
+            if (robot[1] != null)
+            {
+                identyfikatorRobota.Text = robot[1].identyfikator;
+            }
+            
+        }
+
+        private void robotTrzy_Click(object sender, RoutedEventArgs e)
+        {
+            if (robot[2] != null)
+            {
+                identyfikatorRobota.Text = robot[2].identyfikator;
+            }
+        }
+
+        private void robotCztery_Click(object sender, RoutedEventArgs e)
+        {
+            if (robot[3] != null)
+            {
+                identyfikatorRobota.Text = robot[3].identyfikator;
+            }
+        }
+
+        private void robotPiec_Click(object sender, RoutedEventArgs e)
+        {
+            if (robot[4] != null)
+            {
+                identyfikatorRobota.Text = robot[4].identyfikator;
+            }
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (objPozycja == Pozycja.Prawo)
             {
-                wsp_x += 10;
+                robot[0].wsp_x += 10;
             }
             else if (objPozycja == Pozycja.Lewo)
             {
-                wsp_x -= 10;
+                robot[0].wsp_x -= 10;
             }
             else if (objPozycja == Pozycja.Gora)
             {
-                wsp_y -= 10;
+                robot[0].wsp_y -= 10;
             }
             else if (objPozycja == Pozycja.Dol)
             {
-                wsp_y += 10;
+                robot[0].wsp_y += 10;
             }
 
-            if (wsp_x >= 480 || wsp_y >= 480 || wsp_x <= 0 || wsp_y <= 0)
+            if (robot[0].wsp_x >= 480 || robot[0].wsp_y >= 480 || robot[0].wsp_x <= 0 || robot[0].wsp_y <= 0)
             {
                 objPozycja = Pozycja.Stop;
             }
 
             
             //Remove the previous ellipse from the paint canvas.
-            PaintCanvas.Children.Remove(ellipse);
+
 
 
             //Add the ellipse to the canvas
-            ellipse = CreateAnEllipse(20, 20, przycisk);
-            PaintCanvas.Children.Add(ellipse);
 
-            Canvas.SetLeft(ellipse, wsp_x);
-            Canvas.SetTop(ellipse, wsp_y);
+            int i = 0;
+            for (i = 0; i < robot.Length; i++)
+            {
+            PaintCanvas.Children.Remove(ellipse[i]);
+            ellipse[i] = CreateAnEllipse(20, 20, przycisk[i]);
+            PaintCanvas.Children.Add(ellipse[i]);
+            Canvas.SetLeft(ellipse[i], robot[i].wsp_x);
+            Canvas.SetTop(ellipse[i], robot[i].wsp_y);
+            }
 
+            
 
         }
 
@@ -129,17 +209,17 @@ namespace ProjektRM
             SolidColorBrush fillBrush = new SolidColorBrush();
             SolidColorBrush borderBrush = new SolidColorBrush();
 
-            if (przycisk == true)
-            {
-                fillBrush.Color = Colors.Green;
-                borderBrush.Color = Colors.Black;
-            }
-            else
-            {
-                fillBrush.Color = Colors.Red;
-                borderBrush.Color = Colors.Black;
-            }
-
+                if (przycisk)
+                {
+                    fillBrush.Color = Colors.Green;
+                    borderBrush.Color = Colors.Black;
+                }
+                else
+                {
+                    fillBrush.Color = Colors.Red;
+                    borderBrush.Color = Colors.Black;
+                }
+            
             return new Ellipse()
             {
                 Height = height,
@@ -187,24 +267,66 @@ namespace ProjektRM
             System.Windows.Point p = e.GetPosition(PaintCanvas);
             double x = p.X;
             double y = p.Y;
-            if ((wsp_x <= x & x <= (wsp_x + 20)) & (wsp_y <= y & y <= wsp_y + 20))
+            if ((robot[0].wsp_x <= x & x <= (robot[0].wsp_x + 20)) & (robot[0].wsp_y <= y & y <= robot[0].wsp_y + 20))
             {
-                przycisk = !przycisk;
-                rysLinii = true;
+                przycisk[0] = !przycisk[0];
+                rysLinii[0] = true;
             }
             else
             {
-                rysLinii = false;
+                rysLinii[0] = false;
+            }
+
+            if ((robot[1].wsp_x <= x & x <= (robot[1].wsp_x + 20)) & (robot[1].wsp_y <= y & y <= robot[1].wsp_y + 20))
+            {
+                przycisk[1] = !przycisk[1];
+                rysLinii[1] = true;
+            }
+            else
+            {
+                rysLinii[1] = false;
+            }
+
+            if ((robot[2].wsp_x <= x & x <= (robot[2].wsp_x + 20)) & (robot[2].wsp_y <= y & y <= robot[2].wsp_y + 20))
+            {
+                przycisk[2] = !przycisk[2];
+                rysLinii[2] = true;
+            }
+            else
+            {
+                rysLinii[2] = false;
+            }
+
+            if ((robot[3].wsp_x <= x & x <= (robot[3].wsp_x + 20)) & (robot[3].wsp_y <= y & y <= robot[3].wsp_y + 20))
+            {
+                przycisk[3] = !przycisk[3];
+                rysLinii[3] = true;
+            }
+            else
+            {
+                rysLinii[3] = false;
+            }
+
+            if ((robot[4].wsp_x <= x & x <= (robot[4].wsp_x + 20)) & (robot[4].wsp_y <= y & y <= robot[4].wsp_y + 20))
+            {
+                przycisk[4] = !przycisk[4];
+                rysLinii[4] = true;
+            }
+            else
+            {
+                rysLinii[4] = false;
             }
 
         }
 
+
+
         private void PaintCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if(przycisk & (objPozycja == Pozycja.Stop) & rysLinii)
+            if(przycisk[0] & (objPozycja == Pozycja.Stop) & rysLinii[0])
             {
 
-               Point p = e.GetPosition(PaintCanvas);
+                Point p = e.GetPosition(PaintCanvas);
 
                double x = p.X;
                double y = p.Y;
@@ -213,29 +335,181 @@ namespace ProjektRM
                PaintCanvas.Children.Remove(wsp_x_info);
                PaintCanvas.Children.Remove(wsp_y_info);
 
-                myLine.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
+               myLine.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
                myLine.X1 = x;
-               myLine.X2 = wsp_x + 10;
+               myLine.X2 = robot[0].wsp_x + 10;
                myLine.Y1 = y;
-               myLine.Y2 = wsp_y + 10;
+               myLine.Y2 = robot[0].wsp_y + 10;
                myLine.StrokeThickness = 2;
 
                PaintCanvas.Children.Add(myLine);
+               ledChangeColorGreen(Led1);
 
+               wsp_x_info.Text = "X:" + Convert.ToString(x*0.004) + "m";
+               wsp_x_info.Foreground = new SolidColorBrush(Colors.Black);
+               wsp_x_info.Background = new SolidColorBrush(Colors.White);
+               Canvas.SetLeft(wsp_x_info, x + 15);
+               Canvas.SetTop(wsp_x_info, y);
+               PaintCanvas.Children.Add(wsp_x_info);
 
-                wsp_x_info.Text = "X:" + Convert.ToString(x*0.004) + "m";
-                wsp_x_info.Foreground = new SolidColorBrush(Colors.Black);
-                wsp_x_info.Background = new SolidColorBrush(Colors.White);
-                Canvas.SetLeft(wsp_x_info, x + 15);
-                Canvas.SetTop(wsp_x_info, y);
-                PaintCanvas.Children.Add(wsp_x_info);
+               wsp_y_info.Text = "Y:" + Convert.ToString(y*0.004) + "m";
+               wsp_y_info.Foreground = new SolidColorBrush(Colors.Black);
+               wsp_y_info.Background = new SolidColorBrush(Colors.White);
+               Canvas.SetLeft(wsp_y_info, x + 15);
+               Canvas.SetTop(wsp_y_info, y + 20);
+               PaintCanvas.Children.Add(wsp_y_info);
 
-                wsp_y_info.Text = "Y:" + Convert.ToString(y*0.004) + "m";
-                wsp_y_info.Foreground = new SolidColorBrush(Colors.Black);
-                wsp_y_info.Background = new SolidColorBrush(Colors.White);
-                Canvas.SetLeft(wsp_y_info, x + 15);
-                Canvas.SetTop(wsp_y_info, y + 20);
-                PaintCanvas.Children.Add(wsp_y_info);
+            }
+
+            if (przycisk[1] & (objPozycja == Pozycja.Stop) & rysLinii[1])
+            {
+
+                Point p = e.GetPosition(PaintCanvas);
+
+                double x = p.X;
+                double y = p.Y;
+
+                PaintCanvas.Children.Remove(myLine1);
+                PaintCanvas.Children.Remove(wsp_x_info1);
+                PaintCanvas.Children.Remove(wsp_y_info1);
+
+                myLine1.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
+                myLine1.X1 = x;
+                myLine1.X2 = robot[1].wsp_x + 10;
+                myLine1.Y1 = y;
+                myLine1.Y2 = robot[1].wsp_y + 10;
+                myLine1.StrokeThickness = 2;
+
+                PaintCanvas.Children.Add(myLine1);
+                ledChangeColorGreen(Led2);
+
+                wsp_x_info1.Text = "X:" + Convert.ToString(x * 0.004) + "m";
+                wsp_x_info1.Foreground = new SolidColorBrush(Colors.Black);
+                wsp_x_info1.Background = new SolidColorBrush(Colors.White);
+                Canvas.SetLeft(wsp_x_info1, x + 15);
+                Canvas.SetTop(wsp_x_info1, y);
+                PaintCanvas.Children.Add(wsp_x_info1);
+
+                wsp_y_info1.Text = "Y:" + Convert.ToString(y * 0.004) + "m";
+                wsp_y_info1.Foreground = new SolidColorBrush(Colors.Black);
+                wsp_y_info1.Background = new SolidColorBrush(Colors.White);
+                Canvas.SetLeft(wsp_y_info1, x + 15);
+                Canvas.SetTop(wsp_y_info1, y + 20);
+                PaintCanvas.Children.Add(wsp_y_info1);
+
+            }
+
+            if (przycisk[2] & (objPozycja == Pozycja.Stop) & rysLinii[2])
+            {
+
+                Point p = e.GetPosition(PaintCanvas);
+
+                double x = p.X;
+                double y = p.Y;
+
+                PaintCanvas.Children.Remove(myLine2);
+                PaintCanvas.Children.Remove(wsp_x_info2);
+                PaintCanvas.Children.Remove(wsp_y_info2);
+
+                myLine2.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
+                myLine2.X1 = x;
+                myLine2.X2 = robot[2].wsp_x + 10;
+                myLine2.Y1 = y;
+                myLine2.Y2 = robot[2].wsp_y + 10;
+                myLine2.StrokeThickness = 2;
+
+                PaintCanvas.Children.Add(myLine2);
+                ledChangeColorGreen(Led3);
+
+                wsp_x_info2.Text = "X:" + Convert.ToString(x * 0.004) + "m";
+                wsp_x_info2.Foreground = new SolidColorBrush(Colors.Black);
+                wsp_x_info2.Background = new SolidColorBrush(Colors.White);
+                Canvas.SetLeft(wsp_x_info2, x + 15);
+                Canvas.SetTop(wsp_x_info2, y);
+                PaintCanvas.Children.Add(wsp_x_info2);
+
+                wsp_y_info2.Text = "Y:" + Convert.ToString(y * 0.004) + "m";
+                wsp_y_info2.Foreground = new SolidColorBrush(Colors.Black);
+                wsp_y_info2.Background = new SolidColorBrush(Colors.White);
+                Canvas.SetLeft(wsp_y_info2, x + 15);
+                Canvas.SetTop(wsp_y_info2, y + 20);
+                PaintCanvas.Children.Add(wsp_y_info2);
+
+            }
+
+            if (przycisk[3] & (objPozycja == Pozycja.Stop) & rysLinii[3])
+            {
+
+                Point p = e.GetPosition(PaintCanvas);
+
+                double x = p.X;
+                double y = p.Y;
+
+                PaintCanvas.Children.Remove(myLine3);
+                PaintCanvas.Children.Remove(wsp_x_info3);
+                PaintCanvas.Children.Remove(wsp_y_info3);
+
+                myLine3.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
+                myLine3.X1 = x;
+                myLine3.X2 = robot[3].wsp_x + 10;
+                myLine3.Y1 = y;
+                myLine3.Y2 = robot[3].wsp_y + 10;
+                myLine3.StrokeThickness = 2;
+
+                PaintCanvas.Children.Add(myLine3);
+                ledChangeColorGreen(Led4);
+
+                wsp_x_info3.Text = "X:" + Convert.ToString(x * 0.004) + "m";
+                wsp_x_info3.Foreground = new SolidColorBrush(Colors.Black);
+                wsp_x_info3.Background = new SolidColorBrush(Colors.White);
+                Canvas.SetLeft(wsp_x_info3, x + 15);
+                Canvas.SetTop(wsp_x_info3, y);
+                PaintCanvas.Children.Add(wsp_x_info3);
+
+                wsp_y_info3.Text = "Y:" + Convert.ToString(y * 0.004) + "m";
+                wsp_y_info3.Foreground = new SolidColorBrush(Colors.Black);
+                wsp_y_info3.Background = new SolidColorBrush(Colors.White);
+                Canvas.SetLeft(wsp_y_info3, x + 15);
+                Canvas.SetTop(wsp_y_info3, y + 20);
+                PaintCanvas.Children.Add(wsp_y_info3);
+
+            }
+
+            if (przycisk[4] & (objPozycja == Pozycja.Stop) & rysLinii[4])
+            {
+
+                Point p = e.GetPosition(PaintCanvas);
+
+                double x = p.X;
+                double y = p.Y;
+
+                PaintCanvas.Children.Remove(myLine4);
+                PaintCanvas.Children.Remove(wsp_x_info4);
+                PaintCanvas.Children.Remove(wsp_y_info4);
+
+                myLine4.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
+                myLine4.X1 = x;
+                myLine4.X2 = robot[4].wsp_x + 10;
+                myLine4.Y1 = y;
+                myLine4.Y2 = robot[4].wsp_y + 10;
+                myLine4.StrokeThickness = 2;
+
+                PaintCanvas.Children.Add(myLine4);
+                ledChangeColorGreen(Led5);
+
+                wsp_x_info4.Text = "X:" + Convert.ToString(x * 0.004) + "m";
+                wsp_x_info4.Foreground = new SolidColorBrush(Colors.Black);
+                wsp_x_info4.Background = new SolidColorBrush(Colors.White);
+                Canvas.SetLeft(wsp_x_info4, x + 15);
+                Canvas.SetTop(wsp_x_info4, y);
+                PaintCanvas.Children.Add(wsp_x_info4);
+
+                wsp_y_info4.Text = "Y:" + Convert.ToString(y * 0.004) + "m";
+                wsp_y_info4.Foreground = new SolidColorBrush(Colors.Black);
+                wsp_y_info4.Background = new SolidColorBrush(Colors.White);
+                Canvas.SetLeft(wsp_y_info4, x + 15);
+                Canvas.SetTop(wsp_y_info4, y + 20);
+                PaintCanvas.Children.Add(wsp_y_info4);
 
             }
 
@@ -243,11 +517,45 @@ namespace ProjektRM
 
         private void PaintCanvas_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
+
+
+
+            ledChangeColorRed(Led1);
+            ledChangeColorRed(Led2);
+            ledChangeColorRed(Led3);
+            ledChangeColorRed(Led4);
+            ledChangeColorRed(Led5);
+
             PaintCanvas.Children.Remove(myLine);
             PaintCanvas.Children.Remove(wsp_x_info);
             PaintCanvas.Children.Remove(wsp_y_info);
-            rysLinii = false;
-            przycisk = false;
+            PaintCanvas.Children.Remove(myLine1);
+            PaintCanvas.Children.Remove(wsp_x_info1);
+            PaintCanvas.Children.Remove(wsp_y_info1);
+            PaintCanvas.Children.Remove(myLine2);
+            PaintCanvas.Children.Remove(wsp_x_info2);
+            PaintCanvas.Children.Remove(wsp_y_info2);
+            PaintCanvas.Children.Remove(myLine3);
+            PaintCanvas.Children.Remove(wsp_x_info3);
+            PaintCanvas.Children.Remove(wsp_y_info3);
+            PaintCanvas.Children.Remove(myLine4);
+            PaintCanvas.Children.Remove(wsp_x_info4);
+            PaintCanvas.Children.Remove(wsp_y_info4);
+
+            int i = 0;
+            for (i = 0; i < robot.Length; i++)
+            {
+                rysLinii[i] = false;
+                przycisk[i] = false;
+            }
+
         }
+
+        private void identyfikatorRobota_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+
     }
 }
